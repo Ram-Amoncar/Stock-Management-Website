@@ -1,5 +1,6 @@
 <?php
 
+
 $req = $_SERVER['REQUEST_URI'];
 
 $req = substr($req,21); // remove it in hosting
@@ -16,8 +17,8 @@ switch ($req) {
         require './views/register.php';
         break;
 
-    // case '/views/authors':
-    //     require __DIR__ . '/views/authors.php';
+    // case 'assets/creditBG.jpg':
+    //     require __DIR__ . 'assets/creditBG.jpg';
     //     break;
 
     // case '/about':
