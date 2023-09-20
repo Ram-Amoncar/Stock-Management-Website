@@ -10,15 +10,19 @@
 <body>
     <form action="#" method="post">
         <label for="username">Username:</label>
-        <input type="text" id="username"><br>
+        <input type="text" id="username">
         <label for="pass">Password:</label>
-        <input type="text" id="pass"><br>
-        <button type="button"><b>Login</b></button>
+        <input type="text" id="pass">
+        <input type="submit" value="Login" name="btnLogin">
     </form>
 </body>
 
 </html>
 <?php
-$userN = $_POST["username"];
-$pass = $_POST["pass"];
+if(isset($_POST["btnLogin"])){
+    $userN = $_POST["username"];
+    $pass = $_POST["pass"];
+    unset($_POST["btnLogin"]);
+}
+
 ?>
