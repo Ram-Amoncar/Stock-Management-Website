@@ -1,6 +1,0 @@
-RewriteEngine On
-RewriteBase /Stock-Management-Web/
-RewriteRule ^index\.php＄ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /Stock-Management-Web/index.php [L]
