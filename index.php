@@ -37,7 +37,7 @@
         <input type="password" id="pass" name="pass" placeholder="Password" required>
         </div>
         <div class="int-group" style="text-align: left; font-size: 12px; padding-bottom: 20px;">
-            <span>Don't have an account? </span><a href="/register">Register</a>
+            <span>Don't have an account? </span><a href="register.php">Register</a>
         </div>
         <div class="int-group">
             <input type="submit" value="Login" name="btnLogin">
@@ -48,11 +48,17 @@
 
 </html>
 <?php
+ include_once("connect_db.php");
+ include_once("UsersTable.php");
+ $ut=new UsersTable($conn);
 if (isset($_POST["btnLogin"])) {
     $userN = $_POST["username"];
     $pass = $_POST["pass"];
-    
-
+    if($ut->checkIfUserExists($userN,$pass)){
+        // user exists;
+    }else{
+        //user does no exists;
+    }
     unset($_POST["btnLogin"]);
 }
 
