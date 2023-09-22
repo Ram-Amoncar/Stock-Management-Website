@@ -8,7 +8,7 @@
     
 </head>
 <style>
-    <?php include("views/css/login.css") ?>
+    <?php include("css/login.css") ?>
 </style>
 
 <body>
@@ -36,7 +36,7 @@
         </svg>
         <input type="password" id="pass" name="pass" placeholder="Password" required>
         </div>
-        <div class="int-group" style="text-align: left; font-size: 12px; padding-bottom: 20px;">
+        <div class="int-group" id="regLine" >
             <span>Don't have an account? </span><a href="register.php">Register</a>
         </div>
         <div class="int-group">

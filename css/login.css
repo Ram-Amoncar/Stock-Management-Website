@@ -1,6 +1,6 @@
 
 body {
-    background-image: url('assets/creditBG.jpg');
+    background-image: url('./assets/creditBG.jpg');
     background-attachment: fixed;
     background-repeat:  no-repeat;
     background-size: cover;
@@ -16,6 +16,11 @@ form{
     background-color: rgb(255, 255, 255);
     padding: 55px;
     border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+    justify-content: center;
 }
 input{
     background-color: rgb(179, 179, 179);
@@ -27,13 +32,19 @@ input{
 input::placeholder{
     color: black;
 }
+#regLine{
+    font-size: 13px; 
+    padding-bottom: 15px;
+}
 .int-group{
     padding: 5px;
-    margin-block: 15px;
+    margin-block: 10px;
 }
 input[type="submit"]{
     background-color: blue;
     color: white;
+    padding-inline: 1.2em;
+    font-size: 14px;
 }
 a{
     text-decoration: none;
