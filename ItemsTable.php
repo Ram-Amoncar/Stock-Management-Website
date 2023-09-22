@@ -19,10 +19,10 @@ final class ItemsTable
         $this->conn->query($q);
     }
 
-    function add(int $id, string $name, int $quantity, int $cpu, int $total_cost, int $user_id)
+    function add(string $name, int $quantity, int $cpu, int $total_cost, int $user_id)
     {
-        $q = "INSERT INTO $this->tableName (`id`,`name`,`quantity`,`cpu`,`total_cost`,`user_id`) VALUES
-            ( '$id','$name','$quantity','$cpu','$total_cost','$user_id')";
+        $q = "INSERT INTO $this->tableName (`name`,`quantity`,`cpu`,`total_cost`,`user_id`) VALUES
+            ( '$name','$quantity','$cpu','$total_cost','$user_id')";
         return mysqli_query($this->conn, $q);
     }
 

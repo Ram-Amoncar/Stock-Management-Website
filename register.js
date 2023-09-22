@@ -3,7 +3,6 @@ function validate() {
     let email = document.forms["RegForm"]["email"].value;
     let pass1 = document.forms["RegForm"]["pass"].value;
     let pass2 = document.forms["RegForm"]["cPass"].value;
-    console.log(pass1,pass2)
     if(username.length==0){
         alert("Enter username");
         return false;

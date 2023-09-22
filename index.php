@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +16,7 @@
 
 <body>
     <form action="#" method="post">
-        
+        <h4>Login</h4>
         <div class="int-group">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
             <style>
@@ -55,6 +58,7 @@ if (isset($_POST["btnLogin"])) {
     $userN = $_POST["username"];
     $pass = $_POST["pass"];
     if($ut->checkIfUserExists($userN,$pass)){
+        $_SESSION["userid"] = -1;
         // user exists;
     }else{
         //user does no exists;

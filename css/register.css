@@ -1,6 +1,6 @@
 
 body {
-    background-image: url('./assets/creditBG.jpg');
+    background-image: url('../assets/creditBG.jpg');
     background-attachment: fixed;
     background-repeat:  no-repeat;
     background-size: cover;
@@ -26,6 +26,7 @@ form{
     align-items: center;
     justify-content: center;
 }
+
 input{
     background-color: rgb(179, 179, 179);
     border: none;
@@ -36,7 +37,7 @@ input{
 input::placeholder{
     color: black;
 }
-#regLine{
+#loginLine{
     font-size: 13px; 
     padding-bottom: 15px;
 }
