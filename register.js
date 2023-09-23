@@ -22,7 +22,6 @@ function validate() {
     else if (pass1 != pass2) {
         alert("Password fields do not match");            
         return false;
-    }else{
-        return true;
     }
+    return true;
 }
