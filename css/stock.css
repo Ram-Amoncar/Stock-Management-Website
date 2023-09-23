@@ -29,3 +29,58 @@
 body{
     background: linear-gradient(270deg,#00D4FF,#090979);
 }
+#con {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 40vh;
+    justify-content: center;
+    font-size: 24px;
+}
+h4{
+    font-family: monospace;
+    font-weight: 700;
+    padding: 0px 0px 20px 0px;
+    margin: 0px;
+}
+form{
+    background-color: rgb(255, 255, 255);
+    padding: 40px 55px;
+    border-radius: 25px;
+    display: flex;
+    margin: 20px;
+    min-width: 60vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+}
+input{
+    background-color: rgb(179, 179, 179);
+    border: none;
+    color: black;
+    min-width: 200px;
+    padding: 10px;
+    border-radius: 15px;
+}
+input::placeholder{
+    color: black;
+    letter-spacing: 1.2px;
+}
+.int-group{
+    padding: 5px;
+    margin-block: 10px;
+}
+input[type="submit"]{
+    background-color: blue;
+    color: white;
+    padding-inline: 1.2em;
+    font-size: 14px;
+    min-width: 100px;
+}
+input[type="search"]{
+    min-width: unset;
+    padding-inline: 1.2em;
+    font-size: 14px;
+    min-width: 400px;
+}
