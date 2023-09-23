@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/register.css">
     <link rel="stylesheet" href="css/alert.css">
     <link rel="stylesheet" href="css/same.css">
+    <link rel="icon" type="image/x-icon" href="./assets/icon.ico">
 </head>
 
 <body>
@@ -23,6 +24,8 @@
             <span>Already have an account? </span><a href="index.php">Login</a>
         </div>
     </form>
+    <div id = "alert_div" class="alert_div">
+    </div>
 </body>
 
 </html>

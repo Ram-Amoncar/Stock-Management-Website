@@ -21,7 +21,11 @@
     cursor: pointer;
     transition: 0.3s;
   }
-  
+  .alert_div{
+    position:absolute;
+    top:0;
+    right:0;
+   }
   .closebtn:hover {
     color: black;
   }

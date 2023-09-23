@@ -11,6 +11,7 @@ session_start();
     <link rel="stylesheet" href="css/alert.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/same.css">
+    <link rel="icon" type="image/x-icon" href="./assets/icon.ico">
 </head>
 
 <body>

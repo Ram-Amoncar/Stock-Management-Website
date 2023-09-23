@@ -9,6 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage your stock here</title>
     <link rel="stylesheet" href="css/stock.css">
+    <link rel="icon" type="image/x-icon" href="./assets/icon.ico">
 </head>
 
 <body>
