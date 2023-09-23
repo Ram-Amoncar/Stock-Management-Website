@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registeration</title>
     <script src="register.js" defer></script>
+    <link rel="stylesheet" href="css/register.css">
 </head>
 
 <body>
     <form name="RegForm" action="register.php" method="post" onsubmit="return validate()">
-        <label for="userN">Username:</label>
-        <input type="text" name="username"><br>
-        <label for="emailID">Email:</label>
-        <input type="email" name="email"><br> 
-        <label for="password">Password:</label>
-        <input type="password" name="pass"><br>
-        <label for="conPass">Conform Password:</label>
-        <input type="password" name="cPass"><br>
+    <h4>Register</h4>
+        <input type="text" name="username" placeholder="Username"><br>
+        <input type="email" name="email" placeholder="Email"><br> 
+        <input type="password" name="pass" placeholder="Password"><br>
+        <input type="password" name="cPass" placeholder="Conform Password"><br>
         <input type="submit" name="btnRegister" value="Register" >
+        <div class="int-group" id="loginLine" >
+            <span>Already have an account? </span><a href="index.php">Login</a>
+        </div>
     </form>
 </body>
 
