@@ -27,6 +27,15 @@ final class UsersTable
     {
         $q = "SELECT id FROM $this->tableName WHERE username='$username' AND password='$password'";
         $res = mysqli_query($this->conn, $q);
+        if($res->fetch_assoc() === null) return -1;
+        $f = $res->fetch_field();
+        return $f->id;
+    }
+
+    function checkIfUserNameExists(string $username)
+    {
+        $q = "SELECT * FROM $this->tableName WHERE username='$username'";
+        $res = mysqli_query($this->conn, $q);
         if($res->fetch_assoc() === null) return false;
         return true;
     }

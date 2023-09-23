@@ -6,18 +6,23 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Manage your stock here</title>
+    <link rel="stylesheet" href="css/stock.css">
 </head>
 <body>
+<div id="navbar">
+        <a class="left" >Home</a>
+        <a href="/" class="right"><div id="userNdiv">user</div>Log Out</a>
+      </div>
     <form action="stock.php" method="post">
-    name<input type="text" name="name" required>
-    quantity<input type="number" name="quantity" required>
-    cpu<input type="number" name="cpu" required>
-    total cost<input type="number" name="total_cost" readonly>
-    add<input type="submit" value="add" name="add">
-    edit<input type="submit" value="edit" name="edit">
-    delete<input type="submit" value="delete" name="delete">
-    search bar<input type="text" name="search_bar">
+    <input type="text" name="name" placeholder="name" required>
+    <input type="number" name="quantity" placeholder="quantity" required>
+    <input type="number" name="cpu" placeholder="Cost per unit" required>
+    <input type="number" name="total_cost" placeholder="Total cost" readonly>
+    <input type="submit" value="add" name="add">
+    <input type="submit" value="edit" name="edit">
+    <input type="submit" value="delete" name="delete">
+    <input type="text" name="searchBar">
     </form>
 </body>
 </html>

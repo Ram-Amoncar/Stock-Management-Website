@@ -8,11 +8,10 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    
+    <link rel="stylesheet" href="css/alert.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/same.css">
 </head>
-<style>
-    <?php include("css/login.css") ?>
-</style>
 
 <body>
     <form action="#" method="post">
@@ -57,8 +56,12 @@ session_start();
 if (isset($_POST["btnLogin"])) {
     $userN = $_POST["username"];
     $pass = $_POST["pass"];
-    if($ut->checkIfUserExists($userN,$pass)){
-        $_SESSION["userid"] = -1;
+    $res = $ut->checkIfUserExists($userN,$pass);
+    if($res !== -1){
+        $_SESSION["user_id"] = $res;
+        $_SESSION["userN"] = $userN;
+        $_SESSION["pass"] = $pass;
+        header('index.php',true);
         // user exists;
     }else{
         //user does no exists;

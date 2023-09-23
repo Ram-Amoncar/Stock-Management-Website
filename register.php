@@ -7,6 +7,8 @@
     <title>Registeration</title>
     <script src="register.js" defer></script>
     <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/alert.css">
+    <link rel="stylesheet" href="css/same.css">
 </head>
 
 <body>
@@ -32,7 +34,11 @@
     $user = $_POST["username"];
     $email = $_POST["email"];
     $pass = $_POST["pass"];
-    if ($ut->add($user,$pass,$email)) echo"<script>alert('Account Created')</script>";
+    if(! $ut->checkIfUserNameExists($user)){
+        if ($ut->add($user,$pass,$email)) echo"<script>alert('Account Created')</script>";
+    }else{
+        echo"<script>alert('Username already exists')</script>";
+    }
     unset($_POST["btnRegister"]);
  }
 ?>

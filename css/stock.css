@@ -1,0 +1,31 @@
+#navbar {
+    overflow-x: hidden;
+    border-radius: 25px;
+    background-color: black;
+    margin: 20px;
+}
+.left{
+    float: left;
+    font-weight: bold;
+    cursor: default;
+}
+.right{
+    float: right;
+}
+#userNdiv{
+    position: absolute;
+    top: 32px;
+    font-size: 10px;
+}
+#navbar a {
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    color: aliceblue;
+    padding: 20px;
+}
+body{
+    background: linear-gradient(270deg,#00D4FF,#090979);
+}
