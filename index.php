@@ -61,7 +61,6 @@ if (isset($_POST["btnLogin"])) {
     if($res !== -1){
         $_SESSION["user_id"] = $res;
         $_SESSION["userN"] = $userN;
-        $_SESSION["pass"] = $pass;
         header('index.php',true);
         // user exists;
     }else{
