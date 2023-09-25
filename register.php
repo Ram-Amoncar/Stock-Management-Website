@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registeration</title>
-    <script src="register.js"></script>
+    <script src="js/alert.js"></script>
+    <script src="js/register.js"></script>
     <link rel="stylesheet" href="css/register.css">
     <link rel="stylesheet" href="css/alert.css">
     <link rel="stylesheet" href="css/same.css">
@@ -39,7 +40,13 @@ if (isset($_POST["btnRegister"])) {
     $pass = $_POST["pass"];
     if (!$ut->checkIfUserNameExists($user)) {
         $hashedpass= password_hash($pass,PASSWORD_BCRYPT);
-        if ($ut->add($user, $hashedpass, $email)) echo "<script type='text/javascript'>alert_message('Account Created',2);</script>";
+        if ($ut->add($user, $hashedpass, $email)){
+            echo "<script type='text/javascript'> 
+        window.location.replace('index.php')
+        alert_message('Account Created',2);
+        </script>";
+        }
+        
     } else {
         echo "<script type='text/javascript'>
         alert_message('Username already exists',0);

@@ -23,13 +23,17 @@ final class UsersTable
         return mysqli_query($this->conn, $q);
     }
 
-    function checkIfUserExists(string $username, string $password)
+    function checkIfUserExists(string $username, string $password) : string|bool
     {
-        $q = "SELECT id FROM $this->tableName WHERE username='$username' AND password='$password'";
-        $res = mysqli_query($this->conn, $q);
-        if($res->fetch_assoc() === null) return -1;
-        $f = $res->fetch_field();
-        return $f->id;
+        if($this->checkIfUserNameExists($username)){
+            $q = "SELECT id, password FROM $this->tableName WHERE username='$username'";
+            $res = mysqli_query($this->conn, $q);
+            $row = $res->fetch_assoc();
+            if (password_verify($password,$row['password'])) return $row['id'];
+            else return "Invalid Password";
+        }else{
+            return "Invalid Username";
+        }
     }
 
     function checkIfUserNameExists(string $username)
