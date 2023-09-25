@@ -38,7 +38,8 @@ if (isset($_POST["btnRegister"])) {
     $email = $_POST["email"];
     $pass = $_POST["pass"];
     if (!$ut->checkIfUserNameExists($user)) {
-        if ($ut->add($user, $pass, $email)) echo "<script type='text/javascript'>alert_message('Account Created',2);</script>";
+        $hashedpass= password_hash($pass,PASSWORD_BCRYPT);
+        if ($ut->add($user, $hashedpass, $email)) echo "<script type='text/javascript'>alert_message('Account Created',2);</script>";
     } else {
         echo "<script type='text/javascript'>
         alert_message('Username already exists',0);
