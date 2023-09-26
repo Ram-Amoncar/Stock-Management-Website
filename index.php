@@ -72,7 +72,7 @@ if (isset($_POST["btnLogin"])) {
         </script>";
     } else {
         echo "<script type='text/javascript'>alert_message('Login Failed',1);</script>";
-        //user does no exists;
+        //user does not exists;
     }
     unset($_POST["btnLogin"]);
 }

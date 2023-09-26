@@ -17,15 +17,15 @@ session_start();
     <div id="navbar">
         <a class="left">Stock Manangement System</a>
         <a href="./" class="right">
-            <div id="userNdiv">user</div> Log Out
+            <div id="userNdiv"><?= $_SESSION["userN"] ?? "user" ?></div> Log Out
         </a>
     </div>
     <div id="con">
-        <form action="stock.php" method="post">
+        <form action="stockFunctions.php" method="post" name="StockForm">
             <div class="int-group">
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="number" name="quantity" placeholder="Quantity" required>
-                <input type="number" name="cpu" placeholder="Cost per unit" required>
+                <input type="text" name="name" placeholder="Name" >
+                <input type="number" name="quantity" placeholder="Quantity" onchange="findTotal_cost()" >
+                <input type="number" name="cpu" placeholder="Cost per unit" onchange="findTotal_cost()" >
                 <input type="number" name="total_cost" placeholder="Total cost" readonly>
             </div>
             <div class="int-group">
@@ -44,15 +44,4 @@ session_start();
 </body>
 
 </html>
-<?php
-include_once("connect_db.php");
-include_once("ItemsTable.php");
-$it = new ItemsTable($conn);
-if (isset($_POST["add"])) {
-    $name = $_POST["name"];
-    $quantity = $_POST["quantity"];
-    $cpu = $_POST["cpu"];
-    $total_cost = $_POST["total_cost"];
-    $it->add($name, $quantity, $cpu, $total_cost, $_SESSION["userid"]);
-    unset($_POST["add"]);
-}
+

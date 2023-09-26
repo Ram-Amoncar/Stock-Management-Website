@@ -38,5 +38,10 @@ final class ItemsTable
         $q = "SELECT * FROM $this->tableName";
         return mysqli_query($this->conn, $q);
     }
+    function update(string $name, int $quantity,int $cpu,int $total_cost, int $id,int $user_id){
+        $q = "UPDATE ".$this->tableName."SET name = ".$name.", quantity = ".$quantity.", cpu = ".$cpu.", total_cost = ".$total_cost." WHERE id = ".$id." AND user_id = ".$user_id;
+        $res = mysqli_query($this->conn, $q);
+        return mysqli_affected_rows(mysqli_query($this->conn, $q))==1;
+    }
 }
 ?>
