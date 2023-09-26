@@ -15,7 +15,7 @@ session_start();
 
 <body>
     <div id="navbar">
-        <a class="left">Stock Manangement System</a>
+        <a class="left">Stock Management System</a>
         <a href="./" class="right">
             <div id="userNdiv"><?= $_SESSION["userN"] ?? "user" ?></div> Log Out
         </a>
