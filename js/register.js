@@ -4,10 +4,10 @@ function validate() {
     let pass1 = document.forms["RegForm"]["pass"].value;
     let pass2 = document.forms["RegForm"]["cPass"].value;
     let errors = [];
-    if (username.length == 0) errors.push("Username not entered.");
-    if (email.length == 0) errors.push("Email not entered.");
-    if (pass1.length == 0) errors.push("Password not entered.");
-    if (pass2.length == 0) errors.push("Confirm password not entered.");
+    if (username.length == 0) errors.push("Username is empty.");
+    if (email.length == 0) errors.push("Email is empty.");
+    if (pass1.length == 0) errors.push("Password is empty.");
+    if (pass2.length == 0) errors.push("Confirm password is empty.");
     if (pass1 != pass2) errors.push("Password fields do not match.");
 
     if(errors.length>0){
