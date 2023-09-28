@@ -1,5 +1,8 @@
 <?php
 session_start();
+include_once("connect_db.php");
+include_once("ItemsTable.php");
+$it = new ItemsTable($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +26,7 @@ session_start();
         </a>
     </div>
     <div id="con">
-        <form action="stock.php" method="post" name="StockForm">
+        <form name="StockForm" action="stock.php" method="post" onsubmit="return validate()">
             <div class="int-group">
                 <input type="text" name="name" placeholder="Name" >
                 <input type="number" name="quantity" placeholder="Quantity" oninput="findTotal_cost()" >
@@ -34,13 +37,50 @@ session_start();
                 <input type="submit" value="Add" name="add">
                 <input type="submit" value="Update" name="edit">
                 <input type="submit" value="Delete" name="delete">
-                <input type="reset" value="Clear" name="clear" onclick="alert_message('text fields cleared',3)">
+                <input type="reset" value="Clear" name="clear" onclick="alert_message('Text fields cleared',3)">
             </div>
         </form>
         <form action="stock.php" method="post">
             <div class="int-group">
                 <input type="search" name="searchBar" placeholder="Type here to search">
             </div>
+            <table border="1" cellspacing="0" cellpadding="10">
+            <?php
+            $result = $it->getAll($_SESSION['user_id']);
+            if (mysqli_num_rows($result) > 0) : ?>
+                <tr>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Cost per unit</th>
+                    <th>Total Cost</th>
+                    <th>Time & Date</th>
+                    <th>Selection</th>
+                </tr>
+                <?php while ($data = mysqli_fetch_assoc($result)) : ?>
+
+                    <tr id="<?= $data['id'] ?>">
+                        <td>
+                            <?= $data['name'] ?>
+                        </td>
+                        <td>
+                            <?= $data['quantity'] ?>
+                        </td>
+                        <td>
+                            <?= $data['cpu'] ?>
+                        </td>
+                        <td>
+                            <?= $data['total_cost'] ?>
+                        </td>
+                        <td>
+                            <?= $data['added_td'] ?>
+                        </td>
+                        <td style="text-align: center;">
+                            <button type="button" onclick="fieldBuilder(<?= $data['id'] ?>)">Select</button>
+                        </td>
+                    <tr>
+                    <?php endwhile ?>
+                <?php endif ?>
+        </table>
         </form>
     </div>
     <div id="alert_div" class="alert_div">
@@ -49,9 +89,6 @@ session_start();
 
 </html>
 <?php
-include_once("connect_db.php");
-include_once("ItemsTable.php");
-$it = new ItemsTable($conn);
 if (isset($_POST["add"])) {
     $name = $_POST["name"];
     $quantity = $_POST["quantity"];

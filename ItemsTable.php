@@ -19,7 +19,7 @@ final class ItemsTable
         $this->conn->query($q);
     }
 
-    function add(string $name, int $quantity, int $cpu, int $total_cost, int $user_id)
+    function add(string $name, int $quantity, int $cpu, int $total_cost, int $user_id) : bool
     {
         $q = "INSERT INTO $this->tableName (`name`,`quantity`,`cpu`,`total_cost`,`user_id`) VALUES
             ( '$name','$quantity','$cpu','$total_cost','$user_id')";
@@ -33,9 +33,9 @@ final class ItemsTable
         if($res->fetch_assoc() === null) return false;
         return true;
     }
-    function getAll()
+    function getAll(int $user_id) : mysqli_result
     {
-        $q = "SELECT * FROM $this->tableName";
+        $q = "SELECT * FROM $this->tableName WHERE user_id = '$user_id'";
         return mysqli_query($this->conn, $q);
     }
     function update(string $name, int $quantity,int $cpu,int $total_cost, int $id,int $user_id) : bool {
