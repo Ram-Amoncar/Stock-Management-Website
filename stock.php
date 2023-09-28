@@ -19,6 +19,7 @@ $it = new ItemsTable($conn);
 </head>
 
 <body>
+    
     <div id="navbar">
         <a class="left">Stock Management System</a>
         <a href="/index.php?lo=true" class="right">
@@ -26,7 +27,7 @@ $it = new ItemsTable($conn);
         </a>
     </div>
     <div id="con">
-        <form name="StockForm" action="stock.php" method="post" onsubmit="return validate()">
+        <form name="StockForm" action="stockFunctions.php" method="post" onsubmit="return validate()">
             <div class="int-group">
                 <input type="text" name="name" placeholder="Name" >
                 <input type="number" name="quantity" placeholder="Quantity" oninput="findTotal_cost()" >
@@ -71,8 +72,8 @@ $it = new ItemsTable($conn);
                         <td>
                             <?= $data['added_td'] ?>
                         </td>
-                        <td style="text-align: center;">
-                            <button type="button" onclick="fieldBuilder(<?= $data['id'] ?>)">Select</button>
+                        <td style="text-align: center;">    
+                            <button type="button" name="selectBtn" value="<?= $data['id'] ?>" onclick="fieldBuilder(<?= $data['id'] ?>)">Select</button>
                         </td>
                     <tr>
                     <?php endwhile ?>
@@ -82,17 +83,9 @@ $it = new ItemsTable($conn);
     </div>
     <div id="alert_div" class="alert_div">
     </div>
-</body>
-
-</html>
-<?php
-if (isset($_POST["add"])) {
-    $name = $_POST["name"];
-    $quantity = $_POST["quantity"];
-    $cpu = $_POST["cpu"];
-    $total_cost = $_POST["total_cost"];
-    $res=$it->add($name, $quantity, $cpu, $total_cost, $_SESSION["user_id"]);
-    if($res){
+    <?php
+    if(isset($_SESSION['resInsert']) || isset($_SESSION['resUpdate'])){
+    if($_SESSION['resInsert']){
         echo "<script type='text/javascript'>
         alert_message('Added Successful',2);
         </script>";
@@ -101,16 +94,7 @@ if (isset($_POST["add"])) {
         alert_message('Failed to Add',1);
         </script>";
     }
-    unset($_POST["add"]);
-}
-if(isset($_POST["edit"])){
-    $name = $_POST["name"];
-    $quantity = $_POST["quantity"];
-    $cpu = $_POST["cpu"];
-    $total_cost = $_POST["total_cost"];
-    $user_id=$_SESSION["user_id"];
-    $res=$it->update($name,$quantity,$cpu,$total_cost,-1,$user_id);
-    if($res){
+    if($_SESSION['resUpdate']){
         echo "<script type='text/javascript'>
         alert_message('Update Successful',2);
         </script>";
@@ -119,9 +103,11 @@ if(isset($_POST["edit"])){
         alert_message('Failed to Update',1);
         </script>";
     }
-}
-if(isset($_POST["delete"])){
-    
-}
-?>
+    unset($_SESSION['resInsert']);
+    unset($_SESSION['resUpdate']);
+    }
+    ?>
+</body>
+
+</html>
 
