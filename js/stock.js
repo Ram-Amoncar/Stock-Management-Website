@@ -31,6 +31,8 @@ function findTotal_cost(){
 function fieldBuilder(id){
     let tr = document.getElementById(id.toString());
     let tdList = tr.getElementsByTagName('td');
-    console.log(tdList);
-    console.log(id);
+    document.forms["StockForm"]["name"].value=tdList[0].innerText;
+    document.forms["StockForm"]["quantity"].value=tdList[1].innerText;
+    document.forms["StockForm"]["cpu"].value=tdList[2].innerText;
+    document.forms["StockForm"]["total_cost"].value=tdList[3].innerText;
 }

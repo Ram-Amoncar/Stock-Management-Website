@@ -40,10 +40,7 @@ $it = new ItemsTable($conn);
                 <input type="reset" value="Clear" name="clear" onclick="alert_message('Text fields cleared',3)">
             </div>
         </form>
-        <form action="stock.php" method="post">
-            <div class="int-group">
-                <input type="search" name="searchBar" placeholder="Type here to search">
-            </div>
+        <form action="#">
             <table border="1" cellspacing="0" cellpadding="10">
             <?php
             $result = $it->getAll($_SESSION['user_id']);
@@ -111,6 +108,17 @@ if(isset($_POST["edit"])){
     $quantity = $_POST["quantity"];
     $cpu = $_POST["cpu"];
     $total_cost = $_POST["total_cost"];
+    $user_id=$_SESSION["user_id"];
+    $res=$it->update($name,$quantity,$cpu,$total_cost,-1,$user_id);
+    if($res){
+        echo "<script type='text/javascript'>
+        alert_message('Update Successful',2);
+        </script>";
+    }else{
+        echo "<script type='text/javascript'>
+        alert_message('Failed to Update',1);
+        </script>";
+    }
 }
 if(isset($_POST["delete"])){
     

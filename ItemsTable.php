@@ -42,7 +42,7 @@ final class ItemsTable
         $q = "UPDATE $this->tableName SET name = '$name' , quantity = '$quantity' , cpu = '$cpu' , total_cost = '$total_cost' WHERE id = '$id' AND user_id = '$user_id'";
         mysqli_query($this->conn, $q);
         return mysqli_affected_rows($this->conn)==1;
-    }
+    }   
     function delete(int $id, int $user_id) : bool {
         $q = "DELETE FROM $this->tableName WHERE id = '$id' AND user_id = '$user_id'";
         mysqli_query($this->conn, $q);
