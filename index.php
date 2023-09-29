@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(isset($_GET['lo'])){
+    session_destroy();
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -36,8 +36,8 @@ $it = new ItemsTable($conn);
             </div>
             <div class="int-group">
                 <input type="submit" value="Add" name="add">
-                <input type="submit" value="Update" name="edit">
-                <input type="submit" value="Delete" name="delete">
+                <input type="submit" value="Update" name="edit" onclick="disable()">
+                <input type="submit" value="Delete" name="delete" onclick="disable()">
                 <input type="reset" value="Clear" name="clear" onclick="alert_message('Text fields cleared',3)">
             </div>
         </form>
@@ -58,7 +58,7 @@ $it = new ItemsTable($conn);
 
                     <tr id="<?= $data['id'] ?>">
                         <td>
-                            <?= $data['name'] ?>
+                            <?= $data['name']?>
                         </td>
                         <td>
                             <?= $data['quantity'] ?>
@@ -73,7 +73,9 @@ $it = new ItemsTable($conn);
                             <?= $data['added_td'] ?>
                         </td>
                         <td style="text-align: center;">    
-                            <button type="button" name="selectBtn" value="<?= $data['id'] ?>" onclick="fieldBuilder(<?= $data['id'] ?>)">Select</button>
+                            <button type="button" name="selectBtn" value="<?= $data['id'] ?>" onclick="fieldBuilder(<?php
+                            $_SESSION['item_id']=$data['id'];
+                            echo $data['id']; ?>)">Select</button>
                         </td>
                     <tr>
                     <?php endwhile ?>
@@ -84,7 +86,7 @@ $it = new ItemsTable($conn);
     <div id="alert_div" class="alert_div">
     </div>
     <?php
-    if(isset($_SESSION['resInsert']) || isset($_SESSION['resUpdate'])){
+    if(isset($_SESSION['resInsert']) || isset($_SESSION['resUpdate']) || isset($_SESSION['resDelete'])){
     if($_SESSION['resInsert']){
         echo "<script type='text/javascript'>
         alert_message('Added Successful',2);
@@ -103,8 +105,18 @@ $it = new ItemsTable($conn);
         alert_message('Failed to Update',1);
         </script>";
     }
+    if($_SESSION['resDelete']){
+        echo "<script type='text/javascript'>
+        alert_message('Deleted Successfully',2);
+        </script>";
+    }else{
+        echo "<script type='text/javascript'>
+        alert_message('Failed to Delete',1);
+        </script>";
+    }
     unset($_SESSION['resInsert']);
     unset($_SESSION['resUpdate']);
+    unset($_SESSION['resDelete']);
     }
     ?>
 </body>

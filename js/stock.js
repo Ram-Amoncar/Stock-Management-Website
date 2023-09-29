@@ -1,3 +1,5 @@
+document.forms["StockForm"]["delete"].disabled = true;
+document.forms["StockForm"]["edit"].disabled = true;
 function validate(){
     let name = document.forms["StockForm"]["name"].value;
     let quantity = document.forms["StockForm"]["quantity"].value;
@@ -26,6 +28,8 @@ function findTotal_cost(){
     if(quantity.length>0 && cpu.length>0){
         document.forms["StockForm"]["total_cost"].value=(cpu*quantity).toString();
     }
+    document.forms["StockForm"]["delete"].disabled = false;
+    document.forms["StockForm"]["edit"].disabled = false;
 }
 
 function fieldBuilder(id){
@@ -35,4 +39,13 @@ function fieldBuilder(id){
     document.forms["StockForm"]["quantity"].value=tdList[1].innerText;
     document.forms["StockForm"]["cpu"].value=tdList[2].innerText;
     document.forms["StockForm"]["total_cost"].value=tdList[3].innerText;
+}
+function checkDelete(){
+    if(!confirm("Do you want to delete ?")){
+        preventDefault();
+    }
+}
+function disable(){
+    document.forms["StockForm"]["delete"].disabled = true;
+    document.forms["StockForm"]["edit"].disabled = true;
 }
