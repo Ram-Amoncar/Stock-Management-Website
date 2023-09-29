@@ -42,11 +42,12 @@ if (isset($_POST["btnRegister"])) {
         $hashedpass= password_hash($pass,PASSWORD_BCRYPT);
         if ($ut->add($user, $hashedpass, $email)){
             echo "<script type='text/javascript'> 
-        window.location.replace('index.php')
-        alert_message('Account Created',2);
-        </script>";
+            alert_message('Account Created',2);
+            sleep(700).then(() => {
+                window.location.replace('index.php');
+            });
+            </script>";
         }
-        
     } else {
         echo "<script type='text/javascript'>
         alert_message('Username already exists',0);

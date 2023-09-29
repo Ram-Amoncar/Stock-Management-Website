@@ -71,12 +71,14 @@ if (isset($_POST["btnLogin"])) {
         $_SESSION["user_id"] = $res;
         $_SESSION["userN"] = $userN;
         echo "<script type='text/javascript'> 
-        window.location.replace('stock.php')
         alert_message('Login Successful',2);
+        sleep(700).then(() => {
+            window.location.replace('stock.php');
+        });
         </script>";
     } else {
-        echo "<script type='text/javascript'>alert_message('Login Failed',1);</script>";
         //user does not exists;
+        echo "<script type='text/javascript'>alert_message('Login Failed',1);</script>";
     }
     unset($_POST["btnLogin"]);
 }

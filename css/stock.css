@@ -1,37 +1,45 @@
+
 #navbar {
     overflow-x: hidden;
     border-radius: 25px;
     background-color: black;
     margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 .left{
-    float: left;
-    font-weight: bold;
+    font-family: monospace;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    font-size: 1.2rem;
     cursor: default;
+    justify-content: start;
+    
 }
 .right{
-    float: right;
+    letter-spacing: 0.09rem;
+    font-size: 1.1rem;
+    text-align: center;
+    justify-content: end;
 }
 #userNdiv{
     position: absolute;
-    top: 32px;
+    top: 32px;left: 93vw;
     font-size: 10px;
 }
 #navbar a {
     display: flex;
-    font-size: 18px;
-    justify-content: center;
     text-align: center;
     text-decoration: none;
     color: aliceblue;
     padding: 20px;
 }
 body{
-    background-image: url('../assets/mainBG.jpg');
+    /* background-image: url('../assets/mainBG.png');
+    background-size: cover; */
+    background: linear-gradient(45deg,#00D4FF,#090979);
     background-attachment: fixed;
     background-repeat:  no-repeat;
-    background-size: cover;
-    /* background: linear-gradient(270deg,#00D4FF,#090979); */
 }
 #con {
     display: flex;
@@ -75,12 +83,15 @@ input::placeholder{
     padding: 5px;
     margin-block: 10px;
 }
-input[type="submit"]{
-    background-color: blue;
+input[type="submit"], input[type="reset"]{
+    
     color: white;
     padding-inline: 1.2em;
     font-size: 14px;
     min-width: 100px;
+}
+input[type="submit"]:disabled{
+    background-color: grey;
 }
 input[type="search"]{
     min-width: unset;
@@ -88,3 +99,35 @@ input[type="search"]{
     font-size: 14px;
     min-width: 400px;
 }
+table{
+    font-size: 1.2rem;
+}
+input[name="add"]{
+    background-color: rgb(15, 192, 15);
+}
+input[name="edit"]{
+    background-color: blue;
+}
+input[name="delete"]{
+    background-color: red;
+}
+button[name="selectBtn"]{
+    background-color: rgb(119, 255, 0);
+    padding: 5px;
+    border-radius: 45px;
+    border: none;
+}
+input[type="reset"]{
+    background-color: darkblue;
+}
+input[type="text"],input[type="number"]{
+    font-size: 1.05rem;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+    

@@ -13,16 +13,21 @@ final class ItemsTable
             quantity INT(10),
             cpu INT(10),
             total_cost INT(20),
-            added_td DATETIME DEFAULT CURRENT_TIMESTAMP,
             user_id BIGINT(10)
             )";
         $this->conn->query($q);
     }
 
-    function add(string $name, int $quantity, int $cpu, int $total_cost, int $user_id) : bool
+    function add(int $id,string $name, int $quantity, int $cpu, int $total_cost, int $user_id) : bool
     {
-        $q = "INSERT INTO $this->tableName (`name`,`quantity`,`cpu`,`total_cost`,`user_id`) VALUES
-            ( '$name','$quantity','$cpu','$total_cost','$user_id')";
+        if($this->checkIfIdExists($id)){
+            $q = "INSERT INTO $this->tableName (`name`,`quantity`,`cpu`,`total_cost`,`user_id`) VALUES
+            ('$name','$quantity','$cpu','$total_cost','$user_id')";
+        }else{
+            $q = "INSERT INTO $this->tableName (`id`,`name`,`quantity`,`cpu`,`total_cost`,`user_id`) VALUES
+                ('$id', '$name','$quantity','$cpu','$total_cost','$user_id')";
+        }
+
         return mysqli_query($this->conn, $q);
     }
 
@@ -30,7 +35,7 @@ final class ItemsTable
     {
         $q = "SELECT * FROM $this->tableName WHERE id='$id'";
         $res = mysqli_query($this->conn, $q);
-        if($res->fetch_assoc() === null) return false;
+        if($res->num_rows === 0) return false;
         return true;
     }
     function getAll(int $user_id) : mysqli_result
@@ -43,8 +48,8 @@ final class ItemsTable
         mysqli_query($this->conn, $q);
         return mysqli_affected_rows($this->conn)==1;
     }   
-    function delete(int $id, int $user_id) : bool {
-        $q = "DELETE FROM $this->tableName WHERE id = '$id' AND user_id = '$user_id'";
+    function delete(int $id) : bool {
+        $q = "DELETE FROM $this->tableName WHERE id = $id";
         mysqli_query($this->conn, $q);
         return mysqli_affected_rows($this->conn)==1;
     }

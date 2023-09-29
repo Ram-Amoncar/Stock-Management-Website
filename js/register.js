@@ -1,3 +1,6 @@
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 function validate() {
     let username = document.forms["RegForm"]["username"].value;
     let email = document.forms["RegForm"]["email"].value;

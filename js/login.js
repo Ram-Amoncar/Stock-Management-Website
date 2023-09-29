@@ -1,3 +1,7 @@
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 function validate() {
     let username = document.forms["LoginForm"]["username"].value;
     let pass = document.forms["LoginForm"]["pass"].value;
