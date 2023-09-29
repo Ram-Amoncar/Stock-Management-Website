@@ -29,7 +29,7 @@ $it = new ItemsTable($conn);
         
     </div>
     <div id="con">
-        <form name="StockForm" action="stockFunctions.php" method="post" onsubmit="return validate()">
+        <form name="StockForm" action="stockFunctions.php" method="post" onsubmit="return validate()" id="StockForm">
             <div class="int-group">
                 <input type="number" name="id" placeholder="Item ID" >
                 <input type="text" name="name" placeholder="Name" >

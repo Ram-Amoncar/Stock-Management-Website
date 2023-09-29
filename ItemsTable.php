@@ -10,9 +10,9 @@ final class ItemsTable
             (
             id BIGINT(10) PRIMARY KEY AUTO_INCREMENT,
             name VARCHAR(50),
-            quantity INT(10),
-            cpu INT(10),
-            total_cost INT(20),
+            quantity BIGINT(10),
+            cpu BIGINT(10),
+            total_cost BIGINT(20),
             user_id BIGINT(10)
             )";
         $this->conn->query($q);
