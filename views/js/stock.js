@@ -40,17 +40,17 @@ function fieldBuilder(id) {
     document.forms["StockForm"]["quantity"].value = tdList[2].innerText;
     document.forms["StockForm"]["cpu"].value = tdList[3].innerText;
     document.forms["StockForm"]["total_cost"].value = tdList[4].innerText;
-    window.location='#StockForm';
-    document.forms["StockForm"]["id"].setAttribute('readonly','true');
+    window.location = '#StockForm';
+    document.forms["StockForm"]["id"].setAttribute('readonly', 'true');
     disableBtn()
 }
 
-function disableBtn(){
+function disableBtn() {
     document.getElementById("editBtn").removeAttribute('disabled');
     document.getElementById("delBtn").removeAttribute('disabled');
 }
-function clearFields(){
-    alert_message('Text fields cleared',3);
+function clearFields() {
+    alert_message('Text fields cleared', 3);
     document.getElementById("editBtn").setAttribute('disabled', "true");
     document.getElementById("delBtn").setAttribute('disabled', "true");
     document.forms["StockForm"]["id"].removeAttribute('readonly');

@@ -8,13 +8,13 @@ function validate() {
     let errors = [];
     if (username.length == 0) errors.push("Username is empty.");
     if (pass.length == 0) errors.push("Password is empty.");
-    if(errors.length>0){
+    if (errors.length > 0) {
         errors.forEach(ele => {
             alert_message(ele, 0);
         });
         return false;
-    }else{
+    } else {
         return true;
     }
-    
+
 }

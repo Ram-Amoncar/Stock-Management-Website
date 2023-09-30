@@ -18,12 +18,12 @@ final class ItemsTable
         $this->conn->query($q);
     }
 
-    function add(int $id,string $name, int $quantity, int $cpu, int $total_cost, int $user_id) : bool
+    function add(int $id, string $name, int $quantity, int $cpu, int $total_cost, int $user_id): bool
     {
-        if($this->checkIfIdExists($id)){
+        if ($this->checkIfIdExists($id)) {
             $q = "INSERT INTO $this->tableName (`name`,`quantity`,`cpu`,`total_cost`,`user_id`) VALUES
             ('$name','$quantity','$cpu','$total_cost','$user_id')";
-        }else{
+        } else {
             $q = "INSERT INTO $this->tableName (`id`,`name`,`quantity`,`cpu`,`total_cost`,`user_id`) VALUES
                 ('$id', '$name','$quantity','$cpu','$total_cost','$user_id')";
         }
@@ -31,26 +31,28 @@ final class ItemsTable
         return mysqli_query($this->conn, $q);
     }
 
-    function checkIfIdExists(int $id) : bool
+    function checkIfIdExists(int $id): bool
     {
         $q = "SELECT * FROM $this->tableName WHERE id='$id'";
         $res = mysqli_query($this->conn, $q);
-        if($res->num_rows === 0) return false;
+        if ($res->num_rows === 0) return false;
         return true;
     }
-    function getAll(int $user_id) : mysqli_result
+    function getAll(int $user_id): mysqli_result
     {
         $q = "SELECT * FROM $this->tableName WHERE user_id = '$user_id'";
         return mysqli_query($this->conn, $q);
     }
-    function update(string $name, int $quantity,int $cpu,int $total_cost, int $id,int $user_id) : bool {
+    function update(string $name, int $quantity, int $cpu, int $total_cost, int $id, int $user_id): bool
+    {
         $q = "UPDATE $this->tableName SET name = '$name' , quantity = '$quantity' , cpu = '$cpu' , total_cost = '$total_cost' WHERE id = '$id' AND user_id = '$user_id'";
         mysqli_query($this->conn, $q);
-        return mysqli_affected_rows($this->conn)==1;
-    }   
-    function delete(int $id) : bool {
+        return mysqli_affected_rows($this->conn) == 1;
+    }
+    function delete(int $id): bool
+    {
         $q = "DELETE FROM $this->tableName WHERE id = $id";
         mysqli_query($this->conn, $q);
-        return mysqli_affected_rows($this->conn)==1;
+        return mysqli_affected_rows($this->conn) == 1;
     }
 }

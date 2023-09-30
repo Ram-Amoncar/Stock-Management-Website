@@ -1,8 +1,9 @@
-#regLine{
-    font-size: 13px; 
+#regLine {
+    font-size: 13px;
     padding-bottom: 15px;
 }
-svg{
+
+svg {
     position: relative;
     bottom: -10px
 }

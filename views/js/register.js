@@ -13,18 +13,16 @@ function validate() {
     if (pass2.length == 0) errors.push("Confirm password is empty.");
     if (pass1 != pass2) errors.push("Password fields do not match.");
 
-    if(errors.length>0){
+    if (errors.length > 0) {
         errors.forEach(ele => {
             alert_message(ele, 0);
         });
         return false;
-    }else{
+    } else {
         return true;
     }
-    
 }
-
-function setIntputs(email,pass){
+function setIntputs(email, pass) {
     document.forms["RegForm"]["email"].value = email;
     document.forms["RegForm"]["pass"].value = document.forms["RegForm"]["cPass"].value = pass;
 }

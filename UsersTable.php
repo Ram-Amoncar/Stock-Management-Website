@@ -49,4 +49,3 @@ final class UsersTable
         return mysqli_query($this->conn, $q);
     }
 }
-?>
